@@ -577,6 +577,47 @@
         role: Station
         crew: Crew
       cargo-name: Cargo Name / Description
+      actions:
+        startRound: 
+          title: Start the Round (order departments)
+        endRound: 
+          title: End the Round
+        aboveAndBeyond: 
+          title: Above and Beyond
+        dealCrisis: 
+          title: Deal With a Crisis
+        doYourDuty: 
+          title: Do Your Duty
+        escape: 
+          title: Escape Combat
+        evasive: 
+          title: Evasive Manuevers
+        pursue: 
+          title: Pursue Target
+        intoFire: 
+          title: Into the Fire
+        keepTogether: 
+          title: Keep it Together
+        supportDept: 
+          title: Support Department
+        crashSys: 
+          title: Crash Systems
+        defeatECM: 
+          title: Defeat ECM
+        sensorGhost: 
+          title: Sensor Ghost
+        boostEngine: 
+          title: Boost Engines
+        damageControl: 
+          title: Damage Control
+        emergencyRepair: 
+          title: Emergency Repairs
+        fireAll: 
+          title: Fire All Guns
+        fireOne: 
+          title: Fire One Weapon
+        targetSystem: 
+          title: Target Systems
     tweaks: Tweaks
   settings:
     useRollNPCHD: Use NPC HD on token create?
