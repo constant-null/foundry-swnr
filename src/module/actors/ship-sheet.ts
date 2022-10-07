@@ -286,7 +286,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
           roleOrder.push(role);
         }
       }
-      for (const role of roleOrder) {
+      for (let role of roleOrder) {
         let roleName = "";
         if (this.actor.data.data.roles[role]) {
           const roleActor = game.actors?.get(this.actor.data.data.roles[role]);
@@ -294,6 +294,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
             roleName = ` (${roleActor.name})`;
           }
         }
+        role = game.i18n.localize(`swnr.sheet.ship.station.${role}`);
         depts += `<div class="border p-2 flex border-black role-order" data-role="${role}" data-role-name="${roleName}"><a><i class="fas fa-sort"></i></a>${role}${roleName}</div>`;
       }
       const dialogTemplate = `
