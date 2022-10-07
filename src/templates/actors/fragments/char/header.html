@@ -112,26 +112,11 @@
         </div>
       </div>
 
-      <!--AC-->
-      <div class="ac flex flex-row justify-around items-center text-lg">
-        
-        <div class="text-left"> <label class="pr-3"><b>{{localize 'swnr.sheet.ac'}}</label> {{actor.data.data.ac}}</b></div>
+      <div class="flex gap-2 items-center">
       </div>
-
-      <!-- AB-->
-      <div class="ab flex flex-row justify-around items-center text-lg">
-        <label>{{localize 'swnr.sheet.attack-bonus'}}</label>
-        <input
-          class="w-10 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
-          type="number"
-          step="1"
-          name="data.ab"
-          min="-9"
-          max="99"
-          data-dtype="Number"
-          value="{{actor.data.data.ab}}"
-        />
-      </div>  
+      <div class="flex gap-2 items-center">
+      </div>
+       
       <div class="flex gap-2 items-center">
         <div
           class="bg-green-300 border border-green-900 w-full rounded-full h-4 overflow-hidden"
@@ -153,11 +138,106 @@
           ></div>
         </div>
       </div>
-      <div class="flex gap-2 items-center">
+
+<!-- AB-->
+      <div class="ab flex flex-row justify-around items-center text-lg">
+        <label>{{localize 'swnr.sheet.attack-bonus'}}</label>
+        <input
+          class="w-10 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+          type="number"
+          step="1"
+          name="data.ab"
+          min="-9"
+          max="99"
+          data-dtype="Number"
+          value="{{actor.data.data.ab}}"
+        />
+      </div> 
+      <!--AC-->
+      <div class="ac flex flex-row justify-around items-center text-lg">
+        
+        <div class="text-left"> <label class="pr-3"><i class="fa fa-user-shield"></i></label><b>{{actor.data.data.ac}}</b></div>
       </div>
-      <div class="flex gap-2 items-center">
-      </div>
+
       
+      <!-- Effort -->
+      <div
+        class="col-span-4 flex-shrink-0 flex flex-row justify-between py-1 flex-wrap gap-2"
+      >
+        <div>
+          <h3>{{localize 'swnr.effort.title'}} {{actor.data.data.effort.value}}/{{actor.data.data.effort.max}}</h3>
+        </div>
+        <div
+          class="bg-purple-300 border border-purple-900 w-full rounded-full h-4 overflow-hidden"
+        >
+          <div
+            class="bg-purple-500 h-full rounded-full"
+            style="width: min(calc(100% * {{actor.data.data.effort.value}}/{{actor.data.data.effort.max}}));"
+          ></div>
+        </div>
+        <div>
+          <div class="flex flex-col lg:flex-row gap-1">
+          <div>
+            <label for="data.effort.bonus">
+              {{localize 'swnr.effort.bonus'}}:
+            </label>
+            <input
+              class="w-10 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number"
+              step="1"
+              name="data.effort.bonus"
+              value="{{actor.data.data.effort.bonus}}"
+              data-dtype="Number"
+            />
+          </div>
+          <div>
+            <label for="data.effort.current">
+              {{localize 'swnr.effort.current'}}:
+            </label>
+            <input
+              class="w-10 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number"
+              min="0"
+              step="1"
+              max="{{concat data.effort.current data.effort.value}}"
+              name="data.effort.current"
+              value="{{actor.data.data.effort.current}}"
+              data-dtype="Number"
+            />
+          </div>
+          <div>
+            <label for="data.effort.scene">
+              {{localize 'swnr.effort.scene'}}:
+            </label>
+            <input
+              class="w-10 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number"
+              min="0"
+              step="1"
+              max="{{concat data.effort.scene data.effort.value}}"
+              name="data.effort.scene"
+              value="{{actor.data.data.effort.scene}}"
+              data-dtype="Number"
+            />
+          </div>
+          <div>
+            <label for="data.effort.day"
+              >{{localize 'swnr.effort.day'}}:
+            </label>
+            <input
+              class="w-10 text-center px-1.5 py-3.5 border border-gray-800 bg-gray-400 bg-opacity-75 placeholder-blue-800 placeholder-opacity-75 rounded-md"
+              type="number"
+              min="0"
+              step="1"
+              max="{{concat data.effort.day data.effort.value}}"
+              name="data.effort.day"
+              value="{{actor.data.data.effort.day}}"
+              data-dtype="Number"
+            />
+          </div>
+        </div>
+      </div>
+      </div>
 
       <!-- Saves -->
       <div
