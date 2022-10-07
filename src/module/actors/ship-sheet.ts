@@ -258,11 +258,13 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
       return;
     }
     const action = ACTIONS[actionName];
+
     if (!action) {
       ui.notifications?.error("There was an error in looking up your action");
       return;
     }
-    const actionTitle = action.title ? action.title : actionName;
+    const actionSkill = game.i18n.localize(action.skill);
+    const actionTitle = game.i18n.localize(action.title ? action.title : actionName);
     let cp = this.actor.data.data.commandPoints;
     const actionsTaken = this.actor.data.data.actionsTaken
       ? this.actor.data.data.actionsTaken
@@ -396,7 +398,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
     const order = this.actor.data.data.roleOrder
       ? ` (${this.actor.data.data.roleOrder.join(",")})`
       : "";
-    if (action.skill) {
+    if (actionSkill) {
       // this action needs a skill roll
       let skillLevel = -1;
       let attrMod = 0;
@@ -413,7 +415,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
             foundActor = true;
             if (defaultActor.type == "character") {
               for (const skill of defaultActor.itemTypes.skill) {
-                if (action.skill == skill.data.name) {
+                if (actionSkill == skill.data.name) {
                   skillLevel = skill.data.data["rank"];
                   dicePool =
                     skill.data.data["pool"] && skill.data.data["pool"] != "ask"
@@ -448,7 +450,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
               attrMod,
             });
             await roll.roll({ async: true });
-            const title = `<span title="${descText}">Rolling ${actionTitle} ${attrName}${action.skill} for ${defaultActor.name}<br>${noteText}${diffText}</span><br>${order}`;
+            const title = `<span title="${descText}">Rolling ${actionTitle} ${attrName}${actionSkill} for ${defaultActor.name}<br>${noteText}${diffText}</span><br>${order}`;
             roll.toMessage(
               {
                 speaker: ChatMessage.getSpeaker(),
@@ -470,7 +472,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
             attrMod,
           });
           await roll.roll({ async: true });
-          const title = `<span title="${descText}">Rolling ${actionTitle} ${attrName}${action.skill}. No PC/NPC set to role/dept.<br>${noteText}${diffText}</span>`;
+          const title = `<span title="${descText}">Rolling ${actionTitle} ${attrName}${actionSkill}. No PC/NPC set to role/dept.<br>${noteText}${diffText}</span>`;
           roll.toMessage(
             {
               speaker: ChatMessage.getSpeaker(),
