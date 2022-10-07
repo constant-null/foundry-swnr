@@ -350,6 +350,7 @@
       debug: Sheet Debug
       skills: Skills
       weapons: Weapons
+      item: Item
       inventory: Inventory
       armor: Armor
       foci: Foci
