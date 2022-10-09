@@ -296,8 +296,8 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
             roleName = ` (${roleActor.name})`;
           }
         }
-        role = game.i18n.localize(`swnr.sheet.ship.station.${role}`);
-        depts += `<div class="border p-2 flex border-black role-order" data-role="${role}" data-role-name="${roleName}"><a><i class="fas fa-sort"></i></a>${role}${roleName}</div>`;
+        let roleTl = game.i18n.localize(`swnr.sheet.ship.station.${role}`);
+        depts += `<div class="border p-2 flex border-black role-order" data-role="${role}" data-role-name="${roleName}"><a><i class="fas fa-sort"></i></a>${roleTl}${roleName}</div>`;
       }
       const dialogTemplate = `
       <div class="flex flex-col -m-2 p-2 pb-4 bg-gray-200 space-y-2">
@@ -356,7 +356,7 @@ export class ShipActorSheet extends VehicleBaseActorSheet<ShipActorSheetData> {
         for (const act of actionsTaken) {
           const actTitle =
             ACTIONS[act] && ACTIONS[act].title ? ACTIONS[act].title : act;
-          actionsText += `<li>${actTitle}</li>`;
+          actionsText += `<li>${game.i18n.localize(actTitle)}</li>`;
         }
         actionsText += "</ul>";
       }
